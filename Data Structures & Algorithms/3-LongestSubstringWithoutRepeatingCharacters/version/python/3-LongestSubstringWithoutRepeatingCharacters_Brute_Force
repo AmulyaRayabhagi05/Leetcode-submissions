@@ -1,0 +1,18 @@
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        #Brute force
+        def has_unique_characters(sub: str) -> bool:
+        # A set only contains unique elements; if lengths match, all chars are unique
+            return len(set(sub)) == len(sub)
+
+        max_length = 0
+        n = len(s)
+
+         # Generate all possible substrings (start index i, end index j)
+        for i in range(n):
+            for j in range(i + 1, n + 1):
+             substring = s[i:j]
+             if has_unique_characters(substring):
+                max_length = max(max_length, len(substring))
+
+        return max_length
